@@ -1,0 +1,17 @@
+# https://codeforces.com/contest/1954/problem/B
+
+t = int(input())
+from itertools import groupby
+ 
+for _ in range(t):
+ 
+    n = int(input())
+    arr = [*map(int, input().split())]
+    if len(set(arr)) == 1:
+        print(-1)
+        continue
+    best = float('inf')
+    for i, j in groupby(arr):
+        if i == arr[0]:
+            best = min(len([*j]), best)
+    print(best if best != float('inf') else -1)
