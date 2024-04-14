@@ -1,0 +1,25 @@
+# https://codeforces.com/contest/1954/problem/C
+
+t = int(input())
+from itertools import groupby
+ 
+for _ in range(t):
+ 
+    a = input()
+    b = input()
+    A = B = 0
+ 
+    for i, j in zip(a, b):
+ 
+        x1 = A * 10 + int(i)
+        y1 = B * 10 + int(j)
+ 
+        x2 = A * 10 + int(j)
+        y2 = B * 10 + int(i)
+ 
+        if x1 * y1 >= x2 * y2:
+            A, B = x1, y1
+        else:
+            A, B = x2, y2
+    print(max(A, B))
+    print(min(A, B))
