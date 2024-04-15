@@ -1,0 +1,13 @@
+# https://codeforces.com/problemset/problem/1944/A
+
+t = int(input())
+
+for _ in range(t):
+    a, b = map(int, input().split())
+
+    k = a * (a-1) // 2
+
+    if b >= min(k, a-1):
+        print(1)
+    else:
+        print(a)
