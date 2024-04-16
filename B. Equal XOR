@@ -1,0 +1,33 @@
+# https://codeforces.com/problemset/problem/1944/B
+
+t = int(input())
+ 
+for _ in range(t):
+    n, k = map(int, input().split())
+    arr = [*map(int, input().split())]
+ 
+    d = dict()
+ 
+    for el in arr[:len(arr) // 2]:
+        d[el] = d.get(el, 0) + 1
+ 
+    aX, aY = [], []
+ 
+    for i in range(1, n + 1):
+        value = d.get(i, 0)
+        if value in (0, 2):
+            if value == 0:
+                aY += [i]
+                aY += [i]
+            else:
+                aX += [i]
+                aX += [i]
+    for i in range(1, n+1):
+        if d.get(i, 0) == 1:
+            aX += [i]
+            aY += [i]
+ 
+    k *= 2
+ 
+    print(*aX[:k])
+    print(*aY[:k])
