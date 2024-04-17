@@ -1,0 +1,22 @@
+# https://codeforces.com/problemset/problem/1946/A
+
+t = int(input())
+from math import ceil
+ 
+for _ in range(t):
+    n = int(input())
+    arr = [*map(int, input().split())]
+    arr.sort()
+    half = ceil(n/2) - 1
+ 
+    total = 0
+    first = arr[half]
+    for el in arr[half:]:
+        if el > first:
+            if not total:
+                total = el - first
+            break
+        else:
+            total += 1
+ 
+    print(total)
