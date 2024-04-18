@@ -1,0 +1,15 @@
+# https://codeforces.com/contest/1117/problem/A
+
+n = int(input())
+arr = [*map(int, input().split())]
+ 
+_max = cur = 0
+m = max(arr)
+for el in arr:
+    if el == m:
+        cur += 1
+    else:
+        cur = 0
+    _max = max(cur, _max)
+ 
+print(_max)
