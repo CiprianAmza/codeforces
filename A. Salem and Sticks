@@ -1,0 +1,22 @@
+# https://codeforces.com/contest/1105/problem/A
+
+n = int(input())
+arr = [*map(int, input().split())]
+ 
+_m = float('inf')
+best = arr[0]
+ 
+for t in range(1, max(arr) + 1):
+    s = 0
+    for el in arr:
+        if el > t:
+            q = el - t - 1
+        elif el == t:
+            q = 0
+        else:
+            q = t - el - 1
+        s += q
+    if s < _m:
+        _m = s
+        best = t
+print(best, _m)
