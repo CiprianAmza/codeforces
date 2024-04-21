@@ -1,0 +1,20 @@
+# https://codeforces.com/contest/1957/problem/A
+
+t = int(input())
+ 
+for _ in range(t):
+ 
+    n = map(int, input().split())
+    arr = [*map(int, input().split())]
+ 
+    d = dict()
+    for i in arr:
+        d[i] = d.get(i, 0) + 1
+ 
+ 
+    ans = 0
+    for i, j in d.items():
+        if j >= 3:
+            ans += j // 3
+    print(ans)
+ 
