@@ -1,0 +1,40 @@
+# https://codeforces.com/contest/1829/problem/E
+
+t = int(input())
+from collections import deque
+ 
+for _ in range(t):
+ 
+    n, m = map(int, input().split())
+    arr = []
+ 
+    for line in range(n):
+        arr += [[*map(int, input().split())]]
+    ans = 0
+ 
+    def dfs(x, y, visited):
+        stack = deque([(x, y)])
+        _sum = 0
+ 
+        while stack:
+            x, y = stack.popleft()
+            if (x, y) in visited: continue
+            visited.add((x, y))
+            if arr[x][y] == 0: continue
+            _sum += arr[x][y]
+ 
+            for i, j in ((0, 1), (1, 0), (0, -1), (-1, 0)):
+                a, b = x + i, y + j
+                if a >= 0 and b >= 0 and a < n and b < m and (a, b) not in visited and arr[a][b] != 0:
+                    stack.append((a, b))
+ 
+        return _sum
+ 
+    visited = set()
+    for i in range(n):
+        for j in range(m):
+            if (i, j) in visited or arr[i][j] == 0: continue
+            s = dfs(i, j, visited)
+            ans = max(ans, s)
+ 
+    print(ans)
