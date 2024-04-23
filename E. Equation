@@ -1,0 +1,18 @@
+# https://codeforces.com/edu/course/2/lesson/6/2/practice/contest/283932/problem/E
+
+c = float(input())
+ 
+from math import sqrt
+ 
+l = 0
+r = 10 ** 5
+mid = (l+r) / 2
+ 
+while round(mid * mid + sqrt(mid), 6) != round(c, 6):
+ 
+    mid = (l+r) / 2
+    if mid * mid + sqrt(mid) > c:
+        r = mid
+    else:
+        l = mid
+print(l)
