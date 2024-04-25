@@ -1,0 +1,37 @@
+# https://codeforces.com/contest/1682/problem/C
+
+t = int(input())
+ 
+for _ in range(t):
+    n = int(input())
+    arr = [*map(int, input().split())]
+ 
+    a, b = 0, 0
+    cA, cB = 0, 0
+ 
+    arr.sort()
+    for i in range(len(arr)):
+        if not a:
+            a = arr[i]
+            cA += 1
+        elif not b:
+            b = arr[i]
+            cB += 1
+        else:
+            if cA > cB:
+                if b != arr[i]:
+                    cB += 1
+                b = arr[i]
+            elif cA < cB:
+                if a != arr[i]:
+                    cA += 1
+                a = arr[i]
+            else:
+                if a == arr[i]:
+                    if b != arr[i]:
+                        cB += 1
+                    b = arr[i]
+                else:
+                    cA += 1
+                    a = arr[i]
+    print(max(cA, cB))
