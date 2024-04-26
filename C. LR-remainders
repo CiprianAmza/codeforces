@@ -1,0 +1,30 @@
+# https://codeforces.com/contest/1932/problem/C
+
+t = int(input())
+ 
+for _ in range(t):
+    n, m = map(int, input().split())
+    arr = [*map(int, input().split())]
+    arr = [el for el in arr]
+    s = input()
+ 
+    l = 0
+    r = len(arr) - 1
+    for i in s[:-1]:
+        if i == 'L':
+            l += 1
+        else:
+            r -= 1
+ 
+    ans = [arr[l]%m]
+    start = arr[l]
+    for i in s[:-1][::-1]:
+        if i == 'L':
+            l -= 1
+            start = (start * arr[l]) % m
+        else:
+            r += 1
+            start = (start * arr[r]) % m
+        ans += [start % m]
+ 
+    print(*ans[::-1])
