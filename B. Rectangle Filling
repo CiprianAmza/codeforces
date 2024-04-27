@@ -1,0 +1,25 @@
+# https://codeforces.com/contest/1966/problem/B
+
+t = int(input())
+for _ in range(t):
+ 
+    n, k = map(int, input().split())
+    arr = []
+    for _ in range(n):
+        arr += [list(input())]
+ 
+    q = arr[-1][-1]
+    pos = 'NO'
+    if q in arr[0]:
+        for i in range(n):
+            if arr[i][0] == q:
+                pos = 'YES'
+                break
+                
+    q = arr[0][0]
+    if q in arr[-1]:
+        for i in range(n):
+            if arr[i][-1] == q:
+                pos = "YES"
+                break
+    print(pos)
