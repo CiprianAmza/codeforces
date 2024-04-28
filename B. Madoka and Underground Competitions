@@ -1,0 +1,21 @@
+# https://codeforces.com/contest/1717/problem/B
+
+t = int(input())
+ 
+for _ in range(t):
+ 
+    n, k, r, c = map(int, input().split())
+ 
+    arr = [["." for _ in range(n)] for _ in range(n)]
+    r, c = r-1, c-1
+    st = c
+ 
+    for i in range(r, n+r+1):
+        c = st
+        for _ in range(n//k):
+            arr[i % n][c % n] = "X"
+            c += k
+        st += 1
+ 
+    for el in arr:
+        print("".join(el))
