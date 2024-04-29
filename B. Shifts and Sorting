@@ -1,0 +1,18 @@
+# https://codeforces.com/contest/1969/problem/B
+
+t = int(input())
+ 
+for _ in range(t):
+ 
+    s = input()
+    total = 0
+ 
+    ones = 0
+    for el in s:
+        if el == "0":
+            if ones:
+                total += ones + 1
+        else:
+            ones += 1
+ 
+    print(total)
