@@ -1,0 +1,7 @@
+# https://codeforces.com/contest/1896/problem/B
+
+for _ in range(int(input())):
+    N = int(input())
+    S = input()
+    S = S.lstrip('B').rstrip('A')
+    print(max(0, len(S) - 1))
