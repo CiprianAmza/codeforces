@@ -1,0 +1,16 @@
+# https://codeforces.com/contest/1968/problem/A
+
+t = int(input())
+from math import gcd
+ 
+for _ in range(t):
+    n = int(input())
+    best = 0
+    q = 1
+ 
+    for i in range(1, n):
+        v = gcd(i, n) + i
+        if v > best:
+            best = v
+            q = i
+    print(q)
