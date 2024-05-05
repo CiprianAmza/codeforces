@@ -1,0 +1,38 @@
+# https://codeforces.com/contest/1923/problem/C
+
+t = int(input())
+ 
+for _ in range(t):
+    n, q = map(int, input().split())
+    arr = [*map(int, input().split())]
+    _a = [0] * n
+    _b = [0] * n
+    for i in range(n):
+        if arr[i] == 1:
+            if i - 1 >= 0:
+                _a[i] = _a[i-1] + 1
+            else:
+                _a[i] = 1
+            _b[i] = _b[i-1]
+        elif arr[i] == 2:
+            if i - 1 >= 0:
+                _b[i] = _b[i-1] + 1
+            else:
+                _b[i] = 1
+            _a[i] = _a[i-1]
+        else:
+            _a[i] = _a[i-1]
+            _b[i] = _b[i-1]
+    s = list(__import__('itertools').accumulate(arr, lambda x, y: x + y))
+    for __ in range(q):
+        l, r = map(int, input().split())
+        l, r = l - 1, r - 1
+        if l == r:
+            print("NO")
+            continue
+        q1 = _a[r] - (_a[l-1] if (l-1) >= 0 else 0) + r - l
+        q2 = s[r] - (s[l-1] if (l-1) >= 0 else 0)
+        if q2 > q1:
+            print("YES")
+        else:
+            print("NO")
