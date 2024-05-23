@@ -1,0 +1,26 @@
+# https://www.codechef.com/problems/ABCC3?tab=ide
+
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    s = input()
+
+    counter_of_a, a = [], 0
+    for i in range(len(s)):
+        if s[i] == 'a': a += 1
+        counter_of_a.append(a)
+    
+    c = last_c = 0
+    ans = float('inf')
+    print(s)
+    for i in range(len(s)-1, -1, -1):
+        if s[i] == 'c':
+            c += 1 
+        
+        if s[i] == 'b':
+            ans = min(ans, last_c + counter_of_a[i])
+            print(i, last_c, counter_of_a[i], c)
+            last_c = c
+    print(ans, last_c)
+    ans = min(ans, last_c)
+    print(ans)
