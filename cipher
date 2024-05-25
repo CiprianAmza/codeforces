@@ -1,0 +1,14 @@
+lass keyword_cipher(object):
+    
+    def __init__(self, abc, keyword):
+        self.abc = abc
+        self.keyword = "".join(sorted(set(keyword), key=lambda x: keyword.index(x))) + "".join(el for el in abc if el not in keyword)
+    
+    def encode(self, plain):
+        
+        return "".join(self.keyword[self.abc.index(el)] if el in self.keyword else el for el in plain)
+
+    
+    def decode(self, ciphered):
+        
+        return "".join(self.abc[self.keyword.index(el)] if el in self.abc else el for el in ciphered)
