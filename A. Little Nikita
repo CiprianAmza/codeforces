@@ -1,0 +1,5 @@
+# https://codeforces.com/problemset/problem/1977/A
+
+for _ in range(int(input())):
+  n,m = [int(x) for x in input().split()]
+  print('NO' if n<m or (n+m)%2 else 'YES')
