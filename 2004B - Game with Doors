@@ -1,0 +1,19 @@
+    t = int(input())
+    for _ in range(t):
+        l, r = map(int, input().split())
+        L, R = map(int, input().split())
+     
+        if r < L:
+            print(1)
+        elif R < l:
+            print(1)
+        else:
+            ans = 0
+            options = set()
+            for i in range(l-1, r):
+                if L <= i <= R:
+                    options.add((i, i+1))
+            for i in range(L-1, R):
+                if l <= i <= r:
+                    options.add((i, i+1))
+            print(len(options))
